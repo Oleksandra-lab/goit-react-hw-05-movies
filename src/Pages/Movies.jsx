@@ -18,8 +18,9 @@ const Movies = () => {
     const fetchMovies = async () => {
       try {
         setIsLoading(true);
-        const dataMovies = await findMovieByQuery(query);
-        setMovies(dataMovies);
+        const dataMovie = await findMovieByQuery(query);
+        console.log(dataMovie);
+        setMovies(dataMovie);
       } catch (error) {
         setError(error.message);
       } finally {

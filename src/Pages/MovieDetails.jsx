@@ -3,7 +3,7 @@ import { Link, useParams, useLocation, NavLink, Routes, Route } from 'react-rout
 import { getMovieDetails } from '../Services/Api';
 import Loader from '../components/Loader/Loader';
 import ErrorMsg from '../components/ErrorMsg/ErrorMsg';
-import { StyledDetailsContainer } from './Pages.styled';
+import { StyledDetailsContainer, StyledBackBtn } from './Pages.styled';
 const Cast = lazy(() => import('../Pages/Cast'));
 const Reviews = lazy(() => import('../Pages/Reviews'));
 
@@ -35,9 +35,9 @@ const MovieDetails = () => {
   return (
     <>
       <Link to={backLinkHref.current}>
-        <button type="button">Go back</button>
+        <StyledBackBtn type="button">Go back</StyledBackBtn>
       </Link>
-      {isLoading && <Loader />};{error && <ErrorMsg message={error} />}
+      {isLoading && <Loader />}{error && <ErrorMsg message={error} />}
       {movieDetails !== null && (
         <StyledDetailsContainer>
           <img

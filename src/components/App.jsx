@@ -1,5 +1,7 @@
 import {Suspense, lazy} from 'react'
-import { Route, Routes, NavLink} from 'react-router-dom'
+import { Route, Routes} from 'react-router-dom'
+import Loader from '../components/Loader/Loader';
+import {StyledNavLink} from './App.styled'
 
 const Home = lazy(() => import('../Pages/Home'));
 const Movies = lazy(() => import('../Pages/Movies'));
@@ -12,16 +14,16 @@ export const App = () => {
     <div>
       <header>
         <nav>
-          <NavLink className="header-link" to="/">
+          <StyledNavLink className="header-link" to="/">
             Home
-          </NavLink>
-          <NavLink className="header-link" to="/movies">
+          </StyledNavLink>
+          <StyledNavLink className="header-link" to="/movies">
             Movies
-          </NavLink>
+          </StyledNavLink>
         </nav>
       </header>
 
-      <Suspense>
+      <Suspense fallback={<Loader />}>
       <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/movies" element={<Movies/>} />
